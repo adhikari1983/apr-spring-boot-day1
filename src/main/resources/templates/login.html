@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login Page</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+<div class="container mt-4">
+    <h2>Login Form</h2>
+
+    <!-- Local image (under resources/static/images/login.jpg) -->
+    <img th:src="@{/images/login.jpg}" alt="Login Image" class="img-fluid my-3" width="150">
+
+    <!-- Display message from controller -->
+    <h4 th:text="${message}" class="text-info"></h4>
+
+    <!-- Thymeleaf form syntax -->
+    <form th:action="@{/loginValidate}" method="post">
+        <div class="form-group">
+            <label for="emailId">Email Address:</label>
+            <input type="text" class="form-control" id="emailId" name="emailId" placeholder="Enter email address">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-danger ml-2">Reset</button>
+    </form>
+</div>
+</body>
+</html>

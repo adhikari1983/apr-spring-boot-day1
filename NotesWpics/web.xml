@@ -52,7 +52,7 @@ It does not configure your controller mappings (/login, /register).
 
 It has nothing to do with the warning:
 
-Path with "WEB-INF" or "META-INF": [WEB-INF/pages/login.jsp]
+Path with "WEB-INF" or "META-INF": [WEB-INF/pages/login.html]
 
 
 That warning is about how Spring Boot’s embedded Tomcat treats JSPs inside /WEB-INF/.

@@ -25,7 +25,7 @@ public class EmployeeController {
 	@GetMapping("/register")
 	public String registrationPage() {
 		
-		return "employeeRegistration";                        //  /WEB-INF/pages       employeeRegistration.jsp
+		return "employeeRegistration";                        //  /WEB-INF/pages       employeeRegistration.html
 	}
 	
 	
