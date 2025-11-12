@@ -42,11 +42,11 @@
 		
 		<!-- JSP files -->
 		 <!-- We need below two jars for jsp -->
-<!--	<dependency>-->
-<!--		<groupId>org.apache.tomcat.embed</groupId>-->
-<!--		<artifactId>tomcat-embed-jasper</artifactId>-->
-<!--	</dependency>-->
-<!--		<scope>provided</scope>-->
+	<dependency>
+		<groupId>org.apache.tomcat.embed</groupId>
+		<artifactId>tomcat-embed-jasper</artifactId>
+		<scope>provided</scope>
+	</dependency>
 <!-- If, <scope>provided</scope> inside the tomcat-embed-jasper dependency means JSP rendering engine is
 not included at runtime.
 Also, when you add <scope>provided</scope> back and rerun the application locally, it seems to work.
