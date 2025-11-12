@@ -18,8 +18,8 @@ public class EmployeeController {
 
 	@GetMapping({"/login","/"})
 	public String callLoginpage() {
-		//return "login";
-		return "Hello from OpenShift and Spring Boot! Database is connected.";
+		return "login";
+		//return "Hello from OpenShift and Spring Boot! Database is connected.";
 	}
 
 	@GetMapping("/register")
