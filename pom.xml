@@ -1,0 +1,88 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.any</groupId>
+  <artifactId>apriSpringBootDay1</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  
+  <parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.6.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+		<maven.test.skip>true</maven.test.skip>
+	</properties>
+	
+	<dependencies>
+	
+	<!-- Spring boot web -->
+		<dependency>
+			<!-- Setup Spring Boot -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+	
+	
+	  <!-- If you do some change then container will automatically starts -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		
+		
+		<!-- JSP files -->
+		 <!-- We need below two jars for jsp -->
+	<dependency>
+		<groupId>org.apache.tomcat.embed</groupId>
+		<artifactId>tomcat-embed-jasper</artifactId>
+		<scope>provided</scope>
+<!-- If, <scope>provided</scope> inside the tomcat-embed-jasper dependency means JSP rendering engine is
+not included at runtime.
+Also, when you add <scope>provided</scope> back and rerun the application locally, it seems to work.
+This isn't because the scope setting is being ignored, but because:
+IntelliJ/IDE Caching: Your IDE might be running from the already compiled and packaged JAR file still present in
+the target directory from the first run.
+Local Maven Cache: The dependency itself is still downloaded in your local Maven repository (~/.m2/repository).
+✅ Why This Fix Works
+In a typical Spring Boot standalone JAR (using embedded Tomcat), JSP rendering must be available at runtime.
+If you declare it with <scope>provided</scope>, Maven assumes your runtime environment (e.g., external Tomcat)
+will provide it — but in Spring Boot embedded Tomcat, you must bundle it yourself.-->
+	</dependency>
+	
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>jstl</artifactId>
+	</dependency>	
+	
+	
+	<!-- Below will download spring data + jpa+ hibernate etc -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency> 
+		
+		
+		<!-- This is used to connect java with mysql database -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+			
+		</dependency>
+	<dependency>
+	    <groupId>javax.xml.bind</groupId>
+	    <artifactId>jaxb-api</artifactId>
+	</dependency>
+	</dependencies>  
+  
+  
+  
+  
+  
+</project>
