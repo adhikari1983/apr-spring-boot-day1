@@ -91,7 +91,7 @@ will provide it — but in Spring Boot embedded Tomcat, you must bundle it yours
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>3.2.0</version> <!-- or your version -->
+<!--				<version>3.2.0</version> &lt;!&ndash; or your version &ndash;&gt;-->
 				<executions>
 					<execution>
 						<goals>
