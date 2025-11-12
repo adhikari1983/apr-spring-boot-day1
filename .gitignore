@@ -1,0 +1,53 @@
+#----------------------------------------------------------------------#
+# Generated Directories by Maven/Gradle/IDEs                         #
+#----------------------------------------------------------------------#
+
+# Maven target directory (equivalent of frontend 'dist' or 'build')
+/target/
+
+# Gradle build directory
+/build/
+
+# Package Files
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+
+# IDE Specific Files and Directories
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Eclipse
+.project
+.classpath
+.settings/
+# VS Code
+.vscode/
+
+# STS (Spring Tool Suite)
+.apt_generated
+.factorypath
+
+# Maven phase files
+target/
+# other common build directories
+bin/
+out/
+
+# Log file directory
+/logs/
+# or specific log files
+*.log
+log/*.log
+
+# Project specific files (if you use an embedded H2 DB)
+*.h2.db
+
+# Optional: Maven Wrapper
+# Uncomment if you commit your maven wrapper scripts (mvnw/mvnw.cmd)
+# .mvn/wrapper/maven-wrapper.jar
