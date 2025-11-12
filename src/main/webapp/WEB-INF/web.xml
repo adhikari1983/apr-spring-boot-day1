@@ -10,3 +10,85 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
 </web-app>
+
+<!--
+⚙️ 1. Role of web.xml in a Spring Boot Project
+
+In traditional (non-Spring Boot) Java web apps, web.xml is the deployment descriptor that:
+- Configures the servlet mappings, welcome files, filters, and listeners.
+- Defines how requests are routed to servlets (like Spring MVC’s DispatcherServlet).
+
+However, Spring Boot automatically replaces web.xml using Java-based configuration
+(@SpringBootApplication + auto-configuration).
+That means:
+- In Spring Boot, web.xml is optional and usually ignored — unless you deploy your app as a WAR on an external
+Tomcat server.
+
+🧩 2. Your Current web.xml
+<web-app ... version="2.5">
+  <display-name>apriSpringBootDay1</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
+
+
+✅ What it does:
+
+Sets the app name (display-name).
+
+Tells Tomcat which file to serve by default (welcome page) if the user visits /.
+
+❌ What it does not do:
+
+It does not control Spring MVC view resolution.
+
+It does not configure your controller mappings (/login, /register).
+
+It has nothing to do with the warning:
+
+Path with "WEB-INF" or "META-INF": [WEB-INF/pages/login.jsp]
+
+
+That warning is about how Spring Boot’s embedded Tomcat treats JSPs inside /WEB-INF/.
+
+🧱 3. When web.xml Matters
+Scenario	Is web.xml used?	Notes
+Spring Boot JAR (embedded Tomcat)	❌ Ignored	Spring Boot auto-configures everything
+Spring Boot WAR (external Tomcat)	✅ Used	Tomcat reads web.xml to start the app
+Legacy Spring MVC app (no Boot)	✅ Required	Must declare DispatcherServlet manually
+💡 4. Where to Place It
+
+If you keep web.xml, its correct location is:
+
+src
+ └── main
+     └── webapp
+         └── WEB-INF
+              └── web.xml
+
+
+✅ You already have it right.
+But again, Spring Boot doesn’t use it when running as a JAR from IntelliJ.
+
+🟢 5. Recommendation for You
+
+Since you’re running from IntelliJ (embedded Tomcat, not external):
+
+You can safely delete web.xml — it’s not doing anything.
+
+Or you can keep it (no harm) but it won’t affect the behavior.
+
+Focus instead on:
+
+Changing <packaging>war</packaging> → <packaging>jar</packaging>
+
+Removing <scope>provided</scope> from tomcat-embed-jasper
+
+Those two changes will fix the JSP rendering issue.
+-->

@@ -3,7 +3,10 @@
   <groupId>com.any</groupId>
   <artifactId>apriSpringBootDay1</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
+<!-- <packaging>war</packaging>    &lt;!&ndash;  Uncomment this to run on the browser&ndash;&gt;-->
+	<packaging>jar</packaging>  <!--Uncomment this to run on the OCP cloud-->
+	<!--	Changing <packaging>war</packaging> → <packaging>jar</packaging>
+                                                   Removing <scope>provided</scope> from tomcat-embed-jasper-->
   
   <parent>
 		<groupId>org.springframework.boot</groupId>
@@ -13,7 +16,8 @@
 	</parent>
 
 	<properties>
-		<java.version>1.8</java.version>
+<!--		<java.version>1.8</java.version>--> <!--  Uncomment this to run on the browser-->
+		<java.version>11</java.version> <!--to run on the OCP cloud-->
 		<failOnMissingWebXml>false</failOnMissingWebXml>
 		<maven.test.skip>true</maven.test.skip>
 	</properties>
@@ -38,10 +42,11 @@
 		
 		<!-- JSP files -->
 		 <!-- We need below two jars for jsp -->
-	<dependency>
-		<groupId>org.apache.tomcat.embed</groupId>
-		<artifactId>tomcat-embed-jasper</artifactId>
-		<scope>provided</scope>
+<!--	<dependency>-->
+<!--		<groupId>org.apache.tomcat.embed</groupId>-->
+<!--		<artifactId>tomcat-embed-jasper</artifactId>-->
+<!--	</dependency>-->
+<!--		<scope>provided</scope>-->
 <!-- If, <scope>provided</scope> inside the tomcat-embed-jasper dependency means JSP rendering engine is
 not included at runtime.
 Also, when you add <scope>provided</scope> back and rerun the application locally, it seems to work.
@@ -53,7 +58,7 @@ Local Maven Cache: The dependency itself is still downloaded in your local Maven
 In a typical Spring Boot standalone JAR (using embedded Tomcat), JSP rendering must be available at runtime.
 If you declare it with <scope>provided</scope>, Maven assumes your runtime environment (e.g., external Tomcat)
 will provide it — but in Spring Boot embedded Tomcat, you must bundle it yourself.-->
-	</dependency>
+
 	
 	<dependency>
 		<groupId>javax.servlet</groupId>
@@ -79,9 +84,24 @@ will provide it — but in Spring Boot embedded Tomcat, you must bundle it yours
 	    <groupId>javax.xml.bind</groupId>
 	    <artifactId>jaxb-api</artifactId>
 	</dependency>
-	</dependencies>  
-  
-  
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>3.2.0</version> <!-- or your version -->
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
   
   
   
