@@ -5,15 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.dto.EmployeeDTO;
 import com.service.EmployeeService;
 
-@Controller
+@RestController
 public class EmployeeController {
 
 	@Autowired
@@ -21,7 +18,8 @@ public class EmployeeController {
 
 	@GetMapping({"/login","/"})
 	public String callLoginpage() {
-		return "login";
+		//return "login";
+		return "Hello from OpenShift and Spring Boot! Database is connected.";
 	}
 
 	@GetMapping("/register")
