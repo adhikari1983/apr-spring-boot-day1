@@ -39,12 +39,24 @@ public class EmployeeController {
 	}
 
 
-	@PostMapping("/registration")
-	public String registerEmployee(@ModelAttribute EmployeeDTO employeeDTO,Model model) {
-		    employeeService.registerEmp(employeeDTO);
-	
-		    model.addAttribute("message", "Record inserted successfully");
-		return "registrationStatus";
+//	@PostMapping("/registration")
+//	public String registerEmployee(@ModelAttribute EmployeeDTO employeeDTO,Model model) {
+//		    employeeService.registerEmp(employeeDTO);
+//
+//		    model.addAttribute("message", "Record inserted successfully");
+//		return "registrationStatus";
+//	}
+
+	@PostMapping("/registerValidation") // MUST be @PostMapping and match the form's action
+	public String registerEmployee(@ModelAttribute EmployeeDTO employeeDTO, Model model) {
+		// 1. Data binding happens here
+
+		// 2. CRITICAL: Call the Service to save the data
+		employeeService.registerEmp(employeeDTO);
+
+		// 3. Return the success view
+		model.addAttribute("message", "Registration successful!");
+		return "registrationStatus"; // Assuming you have a file named registrationStatus.html
 	}
 	
 	@PostMapping("/loginValidate")
