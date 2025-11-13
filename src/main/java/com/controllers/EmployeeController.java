@@ -22,13 +22,22 @@ public class EmployeeController {
 		//return "Hello from OpenShift and Spring Boot! Database is connected.";
 	}
 
-	@GetMapping("/register")
-	public String registrationPage() {
-		
-		return "employeeRegistration";                        //  /WEB-INF/pages       employeeRegistration.html
+//	@GetMapping("/register")
+//	public String registrationPage() {
+//
+//		return "employeeRegistration";                        //  /WEB-INF/pages       employeeRegistration.html
+//	}
+
+	@GetMapping("/register") // Or whatever path loads the form
+	public String registrationPage(Model model) {
+		// CRITICAL FIX: Initialize and add the required DTO object to the Model
+		model.addAttribute("employeeDTO", new EmployeeDTO());
+
+		// This is the correct template name Thymeleaf is looking for
+		return "employeeRegistration";
 	}
-	
-	
+
+
 	@PostMapping("/registration")
 	public String registerEmployee(@ModelAttribute EmployeeDTO employeeDTO,Model model) {
 		    employeeService.registerEmp(employeeDTO);
