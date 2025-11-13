@@ -1,5 +1,6 @@
 package com.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,8 +66,14 @@ public class EmployeeController {
 	//fetch all records
 	@GetMapping("/showEmployee")
 	public String showAllEmployees(Model model) {
+		// 1. Fetch data from the Service layer
 		List<EmployeeDTO> employeeDtoList=employeeService.findAllEmployees();
-		
+
+		// 2. CRITICAL FIX: Ensure the list is not null before adding it to the Model
+		if (employeeDtoList == null) {
+			// Initialize an empty ArrayList if the service returns null
+			employeeDtoList = new ArrayList<>();
+		}
 		
 		model.addAttribute("employeeDtoList", employeeDtoList);
 		return "showAll";
